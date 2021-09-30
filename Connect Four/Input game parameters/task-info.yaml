@@ -141,6 +141,51 @@ files:
     }
 
   learner_created: false
+- name: src/connectfour/domain/entity/Player.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/domain/entity/GameBoard.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/persistence/GameBoardRegistry.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/persistence/GameBoardRegistryImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/ConsoleRunner.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/Application.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/domain/usecases/CreateGameBoard.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/application/interactors/CreateGameBoardImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/controller/GameController.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/command/Command.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/command/CommandCreate.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/command/factory/CommandFactory.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/command/factory/CommandFactoryImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/controller/GameControllerImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/domain/exceptions/InvalidBoardRowException.kt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/202/stages/1002/implement#comment
 status: Unchecked
 record: -1
