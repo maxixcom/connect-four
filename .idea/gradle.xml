@@ -7,7 +7,6 @@
         <option name="delegatedBuild" value="false" />
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="#JAVA_INTERNAL" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -17,6 +16,12 @@
             <option value="$PROJECT_DIR$/Topics/If expression/Number dividers" />
             <option value="$PROJECT_DIR$/Topics/If expression/Positive, Negative or Zero" />
             <option value="$PROJECT_DIR$/Topics/If expression/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Jumps and returns/Beyond the word" />
+            <option value="$PROJECT_DIR$/Topics/Jumps and returns/First digit" />
+            <option value="$PROJECT_DIR$/Topics/Jumps and returns/Getting letters from the Alphabet" />
+            <option value="$PROJECT_DIR$/Topics/Jumps and returns/Placement of ships" />
+            <option value="$PROJECT_DIR$/Topics/Jumps and returns/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Jumps and returns/Unique characters" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
