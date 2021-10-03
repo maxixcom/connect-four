@@ -156,7 +156,7 @@ files:
 - name: src/connectfour/console/ConsoleRunner.kt
   visible: true
   learner_created: true
-- name: src/connectfour/console/Application.kt
+- name: src/connectfour/console/ConsoleApplication.kt
   visible: true
   learner_created: true
 - name: src/connectfour/domain/usecases/CreateGameBoard.kt
@@ -187,5 +187,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/202/stages/1002/implement#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sat, 02 Oct 2021 13:55:06 UTC
+record: 1

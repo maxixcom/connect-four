@@ -185,6 +185,54 @@ files:
 
 
   learner_created: false
+- name: src/connectfour/entity/Player.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/entity/Board.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/entity/CellType.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/entity/Game.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/service/GameService.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/repository/GameRepository.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/repository/GameRepositoryImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/ConsoleRunner.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/extensions/BoardExtensions.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/service/GameServiceFactory.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/service/GameServiceImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/service/GameServiceFactoryImpl.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/console/ConsoleApplication.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/service/PlayerFactory.kt
+  visible: true
+  learner_created: true
+- name: src/connectfour/service/PlayerFactoryImpl.kt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/202/stages/1003/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sat, 02 Oct 2021 15:09:57 UTC
 record: -1
