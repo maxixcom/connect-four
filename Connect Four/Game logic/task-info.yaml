@@ -403,6 +403,247 @@ files:
 
 
   learner_created: false
+- name: src/connectfour/service/PlayerFactory.kt
+  visible: true
+  text: |
+    package connectfour.service
+
+    import connectfour.entity.Player
+
+    interface PlayerFactory {
+        fun newPlayer(name: String): Player
+    }
+  learner_created: true
+- name: src/connectfour/service/GameService.kt
+  visible: true
+  text: |
+    package connectfour.service
+
+    import connectfour.entity.Player
+
+    interface GameService {
+        fun throwDisk(player: Player, column: Int)
+        fun getWinner(): Player?
+        fun isColumnFull(column: Int): Boolean
+        fun isBoardFull(): Boolean
+    }
+  learner_created: true
+- name: src/connectfour/service/GameServiceFactoryImpl.kt
+  visible: true
+  text: |
+    package connectfour.service
+
+    import connectfour.entity.Game
+
+    class GameServiceFactoryImpl : GameServiceFactory {
+        override fun newServiceForGame(game: Game): GameService {
+            return GameServiceImpl(game)
+        }
+    }
+  learner_created: true
+- name: src/connectfour/service/PlayerFactoryImpl.kt
+  visible: true
+  text: |
+    package connectfour.service
+
+    import connectfour.entity.Player
+
+    class PlayerFactoryImpl : PlayerFactory {
+        override fun newPlayer(name: String): Player = Player(name)
+    }
+  learner_created: true
+- name: src/connectfour/console/extensions/BoardExtensions.kt
+  visible: true
+  text: |
+    package connectfour.console.extensions
+
+    import connectfour.entity.Board
+
+    fun Board.print() {
+        println(
+            (1..this.columns).joinToString(
+                separator = " ",
+                prefix = " "
+            )
+        )
+        this.data.reversed().forEach { row ->
+            println(
+                row.map { it.char }.joinToString(
+                    separator = "║",
+                    prefix = "║",
+                    postfix = "║"
+                )
+            )
+        }
+        val bottom = List(this.columns) { '═' }
+        println(
+            bottom.joinToString(
+                separator = "╩",
+                prefix = "╚",
+                postfix = "╝"
+            )
+        )
+    }
+  learner_created: true
+- name: src/connectfour/service/GameServiceFactory.kt
+  visible: true
+  text: |
+    package connectfour.service
+
+    import connectfour.entity.Game
+
+    interface GameServiceFactory {
+        fun newServiceForGame(game: Game): GameService
+    }
+  learner_created: true
+- name: src/connectfour/console/ConsoleRunner.kt
+  visible: true
+  text: |
+    package connectfour.console
+
+    class ConsoleRunner {
+
+        fun run() {
+        }
+
+    }
+  learner_created: true
+- name: src/connectfour/service/GameServiceImpl.kt
+  visible: true
+  text: |
+    package connectfour.service
+
+    import connectfour.entity.Game
+    import connectfour.entity.Player
+
+    class GameServiceImpl(
+        private val game: Game
+    ) : GameService {
+        override fun throwDisk(player: Player, column: Int) {
+            TODO("Not yet implemented")
+        }
+
+        override fun getWinner(): Player? {
+            TODO("Not yet implemented")
+        }
+
+        override fun isColumnFull(column: Int): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun isBoardFull(): Boolean {
+            TODO("Not yet implemented")
+        }
+    }
+  learner_created: true
+- name: src/connectfour/repository/GameRepositoryImpl.kt
+  visible: true
+  text: |
+    package connectfour.repository
+
+    import connectfour.entity.Board
+    import connectfour.entity.Game
+    import connectfour.entity.Player
+
+    object GameRepositoryImpl : GameRepository {
+        private val games: MutableList<Game> = mutableListOf()
+
+        override fun create(player1: Player, player2: Player, rows: Int, columns: Int): Int {
+            val game = Game(
+                id = games.size,
+                player1 = player1,
+                player2 = player2,
+                board = Board(
+                    rows = rows,
+                    columns = columns,
+                )
+            )
+            games.add(game)
+            return game.id
+        }
+
+        override fun findById(id: Int): Game? = this.games.firstOrNull { it.id == id }
+    }
+  learner_created: true
+- name: src/connectfour/entity/Board.kt
+  visible: true
+  text: |
+    package connectfour.entity
+
+    data class Board(
+        val rows: Int,
+        val columns: Int
+    ) {
+        val data: List<MutableList<CellType>> = List(rows) {
+            MutableList(columns) {
+                CellType.Free
+            }
+        }
+    }
+  learner_created: true
+- name: src/connectfour/entity/CellType.kt
+  visible: true
+  text: |
+    package connectfour.entity
+
+    enum class CellType(val char: Char) {
+        Free(' '),
+        Player1('x'),
+        Player2('o'),
+    }
+  learner_created: true
+- name: src/connectfour/entity/Game.kt
+  visible: true
+  text: |
+    package connectfour.entity
+
+    data class Game(
+        val id: Int,
+        val player1: Player,
+        val player2: Player,
+        val board: Board,
+    )
+  learner_created: true
+- name: src/connectfour/console/ConsoleApplication.kt
+  visible: true
+  text: |
+    package connectfour
+
+    import connectfour.repository.GameRepository
+    import connectfour.repository.GameRepositoryImpl
+    import connectfour.service.GameServiceFactory
+    import connectfour.service.GameServiceFactoryImpl
+    import connectfour.service.PlayerFactory
+    import connectfour.service.PlayerFactoryImpl
+
+    object ConsoleApplication {
+        val playerFactory: PlayerFactory = PlayerFactoryImpl()
+        val gameRepository: GameRepository = GameRepositoryImpl
+        val gameServiceFactory: GameServiceFactory = GameServiceFactoryImpl()
+    }
+  learner_created: true
+- name: src/connectfour/entity/Player.kt
+  visible: true
+  text: |
+    package connectfour.entity
+
+    data class Player(
+        val name: String
+    )
+  learner_created: true
+- name: src/connectfour/repository/GameRepository.kt
+  visible: true
+  text: |
+    package connectfour.repository
+
+    import connectfour.entity.Game
+    import connectfour.entity.Player
+
+    interface GameRepository {
+        fun create(player1: Player, player2: Player, rows: Int, columns: Int): Int
+        fun findById(id: Int): Game?
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/202/stages/1004/implement#comment
 status: Unchecked
 record: -1
