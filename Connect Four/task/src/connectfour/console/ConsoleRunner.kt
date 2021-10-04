@@ -17,7 +17,7 @@ class ConsoleRunner {
 
         val idGame = gameRepository.create(
             player1 = playerFactory.newPlayer(playerName1),
-            player2 = playerFactory.newPlayer(playerName1),
+            player2 = playerFactory.newPlayer(playerName2),
             rows = rows,
             columns = columns,
         )
