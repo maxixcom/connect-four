@@ -647,6 +647,9 @@ files:
 - name: src/connectfour/console/ConsoleUtils.kt
   visible: true
   learner_created: true
+- name: src/connectfour/exception/IncorrectColumnNumberException.kt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/202/stages/1004/implement#comment
 status: Unchecked
 record: -1

@@ -2,3 +2,5 @@ content:
 - If expression
 - Jumps and returns
 - Named arguments
+- List
+- Mutable List

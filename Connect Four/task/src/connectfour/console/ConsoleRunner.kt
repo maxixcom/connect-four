@@ -27,5 +27,12 @@ class ConsoleRunner {
 
         game.printStartMessage()
         game.board.print()
+
+        val l = mutableListOf("1")
+        val s = mutableSetOf("1")
+        val m = mutableMapOf("1" to "2")
+        l.size
+        s.size
+        m.size
     }
 }

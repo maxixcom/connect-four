@@ -2,6 +2,8 @@ package connectfour.console
 
 import connectfour.entity.Board
 import connectfour.entity.Game
+import connectfour.entity.Player
+import connectfour.exception.IncorrectColumnNumberException
 
 fun printWelcomeMessage() {
     println("Connect Four")
@@ -79,3 +81,19 @@ fun Game.printStartMessage() {
     println("${player1.name} VS ${player2.name}")
     println("Board ${board.rows} X ${board.columns}")
 }
+
+//fun Game.readPlayersTurn(player: Player) {
+//    while (true) {
+//        try {
+//            println("${player.name}'s turn:")
+//            val c = readLine()!!.toInt()
+//            if (c !in 1..board.columns) {
+//                throw IncorrectColumnNumberException()
+//            }
+//        } catch (e: IncorrectColumnNumberException) {
+//            println(e.message)
+//        } catch (e: Exception) {
+//            println(e.message)
+//        }
+//    }
+//}
