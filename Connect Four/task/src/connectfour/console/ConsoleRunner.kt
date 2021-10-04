@@ -1,6 +1,9 @@
 package connectfour.console
 
 import connectfour.ConsoleApplication
+import connectfour.entity.CellType
+import connectfour.exception.ColumnIsFullException
+import connectfour.exception.IncorrectColumnNumberException
 import connectfour.repository.GameRepository
 import connectfour.service.GameServiceFactory
 import connectfour.service.PlayerFactory
@@ -16,8 +19,8 @@ class ConsoleRunner {
         var (rows, columns) = readBoardsDimensions()
 
         val idGame = gameRepository.create(
-            player1 = playerFactory.newPlayer(playerName1),
-            player2 = playerFactory.newPlayer(playerName2),
+            player1 = playerFactory.newPlayer(playerName1, CellType.Player1),
+            player2 = playerFactory.newPlayer(playerName2, CellType.Player2),
             rows = rows,
             columns = columns,
         )
@@ -26,13 +29,45 @@ class ConsoleRunner {
         val gameService = gameServiceFactory.newServiceForGame(game)
 
         game.printStartMessage()
-        game.board.print()
 
-        val l = mutableListOf("1")
-        val s = mutableSetOf("1")
-        val m = mutableMapOf("1" to "2")
-        l.size
-        s.size
-        m.size
+        var turn = 0
+        mainloop@ while (true) {
+            val currentPlayer = if (turn % 2 == 0) game.player1 else game.player2
+            game.board.print()
+
+            playerinput@ while (true) {
+                val inputCommand = readPlayersInput(currentPlayer)
+                if (inputCommand is InputCommand.End) {
+                    break@mainloop
+                }
+                try {
+                    val inputColumn = (inputCommand as InputCommand.Column).column
+                    gameService.throwDisk(currentPlayer, inputColumn)
+                    break@playerinput
+                } catch (e: ColumnIsFullException) {
+                    println(e.message)
+                } catch (e: IncorrectColumnNumberException) {
+                    println(e.message)
+                } catch (e: Exception) {
+                    println("Unknown error: ${e.message}")
+                    break@mainloop
+                }
+            }
+
+            val winner = gameService.getWinner()
+            if (winner != null) {
+                // TODO: make winner message
+                println("TODO: Winner message")
+                break
+            }
+
+//            if (gameService.isBoardFull()) {
+//                break
+//            }
+
+            turn++
+        }
+
+        printGameOverMessage()
     }
 }

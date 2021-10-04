@@ -452,39 +452,6 @@ files:
         override fun newPlayer(name: String): Player = Player(name)
     }
   learner_created: true
-- name: src/connectfour/console/extensions/BoardExtensions.kt
-  visible: true
-  text: |
-    package connectfour.console.extensions
-
-    import connectfour.entity.Board
-
-    fun Board.print() {
-        println(
-            (1..this.columns).joinToString(
-                separator = " ",
-                prefix = " "
-            )
-        )
-        this.data.reversed().forEach { row ->
-            println(
-                row.map { it.char }.joinToString(
-                    separator = "║",
-                    prefix = "║",
-                    postfix = "║"
-                )
-            )
-        }
-        val bottom = List(this.columns) { '═' }
-        println(
-            bottom.joinToString(
-                separator = "╩",
-                prefix = "╚",
-                postfix = "╝"
-            )
-        )
-    }
-  learner_created: true
 - name: src/connectfour/service/GameServiceFactory.kt
   visible: true
   text: |
@@ -650,6 +617,12 @@ files:
 - name: src/connectfour/exception/IncorrectColumnNumberException.kt
   visible: true
   learner_created: true
+- name: src/connectfour/console/InputCommand.kt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/202/stages/1004/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Mon, 04 Oct 2021 20:58:14 UTC
 record: -1

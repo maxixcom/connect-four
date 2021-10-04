@@ -1,5 +1,3 @@
 package connectfour.exception
 
-class IncorrectColumnNumberException(
-    message: String = "Incorrect column number"
-) : Exception(message)
+class IncorrectColumnNumberException(message: String = "") : Exception(message)
