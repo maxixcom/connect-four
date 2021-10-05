@@ -42,7 +42,12 @@ class ConsoleRunner {
                 }
                 try {
                     val inputColumn = (inputCommand as InputCommand.Column).column
-                    gameService.throwDisk(currentPlayer, inputColumn)
+                    val coordinates = gameService.throwDisk(currentPlayer, inputColumn)
+                    if (coordinates != null && gameService.isTheDiskWon(coordinates)) {
+                        game.board.print()
+                        printPlayerWon(currentPlayer)
+                        break@mainloop
+                    }
                     break@playerinput
                 } catch (e: ColumnIsFullException) {
                     println(e.message)
@@ -54,16 +59,11 @@ class ConsoleRunner {
                 }
             }
 
-            val winner = gameService.getWinner()
-            if (winner != null) {
-                // TODO: make winner message
-                println("TODO: Winner message")
+            if (gameService.isBoardFull()) {
+                game.board.print()
+                printDrawMessage()
                 break
             }
-
-//            if (gameService.isBoardFull()) {
-//                break
-//            }
 
             turn++
         }

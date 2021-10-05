@@ -98,3 +98,11 @@ fun readPlayersInput(player: Player): InputCommand {
 fun printGameOverMessage() {
     println("Game over!")
 }
+
+fun printDrawMessage() {
+    println("It is a draw")
+}
+
+fun printPlayerWon(player: Player) {
+    println("Player ${player.name} won")
+}
