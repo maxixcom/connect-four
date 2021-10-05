@@ -1,7 +1,6 @@
 package connectfour.console
 
 import connectfour.entity.Board
-import connectfour.entity.Game
 import connectfour.entity.Player
 
 fun printWelcomeMessage() {
@@ -76,9 +75,14 @@ fun Board.print() {
     )
 }
 
-fun Game.printStartMessage() {
+fun printStartMessage(player1: Player, player2: Player, rows: Int, columns: Int, totalGames: Int = 1) {
     println("${player1.name} VS ${player2.name}")
-    println("${board.rows} X ${board.columns} board")
+    println("$rows X $columns board")
+    if (totalGames > 1) {
+        println("Total $totalGames games")
+    } else {
+        println("Single game")
+    }
 }
 
 fun readPlayersInput(player: Player): InputCommand {
@@ -105,4 +109,36 @@ fun printDrawMessage() {
 
 fun printPlayerWon(player: Player) {
     println("Player ${player.name} won")
+}
+
+fun readNumberOfGames(): Int {
+    var num = 1
+    while (true) {
+        println("Do you want to play single or multiple games?")
+        println("For a single game, input 1 or press Enter")
+        println("Input a number of games:")
+        try {
+            val input = readLine()!!
+            if (input.isEmpty()) {
+                break
+            }
+            num = input.toInt()
+            if (num <= 0) {
+                throw IllegalArgumentException()
+            }
+            break
+        } catch (e: Exception) {
+            println("Invalid input")
+        }
+    }
+    return num
+}
+
+fun printGameTitle(idGame: Int) {
+    println("Game #$idGame")
+}
+
+fun printScore(player1: Player, player2: Player) {
+    println("Score")
+    println("${player1.name}: ${player1.score} ${player2.name}: ${player2.score}")
 }

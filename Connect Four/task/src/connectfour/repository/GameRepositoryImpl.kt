@@ -9,7 +9,7 @@ object GameRepositoryImpl : GameRepository {
 
     override fun create(player1: Player, player2: Player, rows: Int, columns: Int): Int {
         val game = Game(
-            id = games.size,
+            id = games.size + 1,
             player1 = player1,
             player2 = player2,
             board = Board(

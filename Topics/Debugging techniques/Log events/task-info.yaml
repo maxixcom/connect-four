@@ -1,0 +1,20 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun String?.capitalize(): String? {
+        val capitalized = when {
+            isNullOrBlank() -> this
+            length == 1 -> toUpperCase()
+            else -> Character.toUpperCase(this[0]).toString() + substring(1)
+        }
+        return capitalized
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13740#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 05 Oct 2021 14:36:01 UTC
+record: -1
